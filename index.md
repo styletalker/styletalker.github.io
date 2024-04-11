@@ -13,14 +13,49 @@ For a fair comparison to the baseline models, all audios are downsampled to 16k 
 
 **Sample 1**
 
-**Context:**
 
+<table>
+  <tbody><tr>
+    <th>Context</th>
+    <th>Next Turn</th>
+  </tr>
+  <tr>
+    <td>
+      <ul>
+        <p>A: 'You're from New York, aren't you?'</p>
+<p>B: 'Yes, that's right.'</p>
+<p>A: 'What do you suggest I should see in New York?'</p>
+          <audio controls="">
+            <source src="">
+              Your browser does not support the audio element.
+          </audio>
+      </ul>
+    </td>
+    <td>
+      <ul>
+        <li><b>Ground Truth: </b></li>
+          <audio controls="">
+            <source src="" type="audio/wav">
+              Your browser does not support the audio element.
+          </audio>
+        <li><b>SpeechGPT: </b></li>
+          <audio controls="">
+            <source src="" type="audio/wav">
+              Your browser does not support the audio element.
+          </audio>
+        <li><b>Cascade: </b></li>
+          <audio controls="">
+            <source src="" type="audio/wav">
+              Your browser does not support the audio element.
+          </audio>
+        <li><b>StyleTalker: </b></li>
+          <audio controls="">
+            <source src="" type="audio/wav">
+              Your browser does not support the audio element.
+          </audio>
+      </ul>
+    </td>
+  </tr>
+</tbody></table>
 
-|              | Sample 1 (p294 → p326)
-|:------------:|:-------:|:-------:|
-|    **Context**    |    <audio controls="controls">  <source type="audio/wav" src="https://raw.githubusercontent.com/styletalker/styletalker.github.io/main/demo/source/55.wav"></source> </audio>   |    <audio controls="controls">  <source type="audio/wav" src="https://raw.githubusercontent.com/styletalker/styletalker.github.io/main/demo/source/76.wav"></source> </audio>  |
-|    **AGAIN-VC**   |     <audio controls="controls">  <source type="audio/wav" src="https://raw.githubusercontent.com/styletalker/styletalker.github.io/main/demo/againvc/55.wav"></source> </audio>    |     <audio controls="controls">  <source type="audio/wav" src="https://raw.githubusercontent.com/styletalker/styletalker.github.io/main/demo/againvc/76.wav"></source> </audio>     |
-|    **VQMIVC-VC**   |     <audio controls="controls">  <source type="audio/wav" src="https://raw.githubusercontent.com/styletalker/styletalker.github.io/main/demo/vqmivc/55.wav"></source> </audio>    |     <audio controls="controls">  <source type="audio/wav" src="https://raw.githubusercontent.com/styletalker/styletalker.github.io/main/demo/vqmivc/76.wav"></source> </audio>     |
-| **YourTTS** |    <audio controls="controls">  <source type="audio/wav" src="https://raw.githubusercontent.com/styletalker/styletalker.github.io/main/demo/yourtts/55.wav"></source> </audio>     |    <audio controls="controls">  <source type="audio/wav" src="https://raw.githubusercontent.com/styletalker/styletalker.github.io/main/demo/yourtts/76.wav"></source> </audio>      |
-| **StyleTTS-VC (Proposed)** |    <audio controls="controls">  <source type="audio/wav" src="https://raw.githubusercontent.com/styletalker/styletalker.github.io/main/demo/stylettsvc/55.wav"></source> </audio>     |    <audio controls="controls">  <source type="audio/wav" src="https://raw.githubusercontent.com/styletalker/styletalker.github.io/main/demo/stylettsvc/76.wav"></source> </audio>      |
 
