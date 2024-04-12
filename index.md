@@ -3,6 +3,145 @@
 The rapid advancement of large language models (LLMs) has significantly propelled the development of text-based chatbots, demonstrating their capability to engage in coherent and contextually relevant dialogues. However, extending these advancements to enable end-to-end speech-to-speech conversation bots remains a formidable challenge, primarily due to the extensive dataset and computational resources required. The conventional approach of cascading automatic speech recognition (ASR), LLM, and text-to-speech (TTS) models in a pipeline, while effective, suffers from unnatural prosody because it lacks direct interactions between the input audio and its transcribed text and the output audio. These systems are also limited by their inherent latency from the ASR process for real-time applications. This paper introduces StyleTalker, an innovative framework that fine-tunes an audio LLM alongside a style-based TTS model for fast spoken dialog generation. StyleTalker takes user input audio and uses transcribed chat history and speech styles to generate both the speaking style and text for the response. Subsequently, the TTS model synthesizes the speech, which is then played back to the user. While the response speech is being played, the input speech undergoes ASR processing to extract the transcription and speaking style, serving as the context for the ensuing dialogue turn. This novel pipeline accelerates the traditional cascade ASR-LLM-TTS systems while integrating rich paralinguistic information from input speech. Our experimental results show that StyleTalker significantly outperforms the conventional cascade and speech-to-speech baselines in terms of both dialogue naturalness and coherence while being nearly 2 times faster.
 
 ---
+## PodcastFillers Dataset
+
+**Sample 1**
+
+<table>
+  <tbody><tr>
+    <th>Context</th>
+    <th>Next Turn</th>
+  </tr>
+  <tr>
+    <td>
+      <ul>
+<p>A: 'You know, it teaches yourself. You just install it and you magically. know how to use it, but it's better to have a guide. How else, what, where else can the good people who are listening to this show or watching it on YouTube connect with you? and connect with you and, and learn more about how you can help them.'</p>
+<p>B: 'So I'm actually gonna take the opposite approach. Considering I do have, like, the podcast and YouTube channel. No, I'll, I'll take the opposite approach and just point people to the hump bitch. I think I do a pretty good job at like siloing people off into kinda what they wanna learn more about or listen to or that sort of stuff, so. DoomBlow.com, man.'</p>
+<p>A: 'That's awesome. Well, Pete, thank you for coming on the show. I feel like I could have Joe Rogan'd on you and gone for three hours, but thank you for, uh, sharing an hour of your time with us here, and I hope you have a great rest of your day, and we'll see you around the interwebs.'</p>
+          <audio controls="">
+            <source src="https://raw.githubusercontent.com/styletalker/styletalker.github.io/main/wav/podcast/context/2.wav">
+              Your browser does not support the audio element.
+          </audio>
+      </ul>
+    </td>
+    <td>
+      <ul>
+        <li><b>Ground Truth: </b></li>
+		<p><i>Yeah, thank you, Chris. I really do appreciate it. And I also, I, I, I didn't tell you this. Yeah, but I also appreciate- ... your product and everything that you guys work on. It's been extremely helpful. as a creator. So thanks for having me on. I appreciate it.</i></p>
+          <audio controls="">
+            <source src="https://raw.githubusercontent.com/styletalker/styletalker.github.io/main/wav/podcast/gt/2.wav" type="audio/wav">
+              Your browser does not support the audio element.
+          </audio>
+        <li><b>Cascade: </b></li>
+		<p><i>Thanks for having me.</i></p>
+          <audio controls="">
+            <source src="https://raw.githubusercontent.com/styletalker/styletalker.github.io/main/wav/podcast/cascade/2.wav" type="audio/wav">
+              Your browser does not support the audio element.
+          </audio>
+        <li><b>StyleTalker: </b></li>
+		<p><i>You know, I appreciate you saying that. I mean, you know, like, I don't know if I'm gonna be doing this for another 10 years or whatever, but I, I really enjoy doing it and I really enjoy the feedback that I get from people. So, you know, if I'm doing it, I'm doing it. And if I'm not doing it, I'm not doing it. But, you know, I'm gonna do it for as long as I can.</i></p>
+          <audio controls="">
+            <source src="https://raw.githubusercontent.com/styletalker/styletalker.github.io/main/wav/podcast/styletalker/2.wav" type="audio/wav">
+              Your browser does not support the audio element.
+          </audio>
+      </ul>
+    </td>
+  </tr>
+</tbody></table>
+
+
+**Sample 2**
+
+<table>
+  <tbody><tr>
+    <th>Context</th>
+    <th>Next Turn</th>
+  </tr>
+  <tr>
+    <td>
+      <ul>
+<p>A: 'It makes me feel really old, but I'm like, "How do I do this?"'</p>
+<p>B: 'I just have too many apps. I'm trying to live that minimal life.'</p>
+<p>A: '(laughs) With every end of every interview. I just threw a few quick popcorn questions. Um- Normally they're questions that a fan might have for you. ... questions that I have off the top of my head that I'm just curious about that have no context. My first one is... Uh, if you could perform with any musician living or dead, who would it be and why?'</p>
+
+          <audio controls="">
+            <source src="https://raw.githubusercontent.com/styletalker/styletalker.github.io/main/wav/podcast/context/3.wav">
+              Your browser does not support the audio element.
+          </audio>
+      </ul>
+    </td>
+    <td>
+      <ul>
+        <li><b>Ground Truth: </b></li>
+		<p><i>Stevie Wonder. because he has been probably my greatest musical inspiration.</i></p>
+          <audio controls="">
+            <source src="https://raw.githubusercontent.com/styletalker/styletalker.github.io/main/wav/podcast/gt/3.wav" type="audio/wav">
+              Your browser does not support the audio element.
+          </audio>
+        <li><b>Cascade: </b></li>
+		<p><i>Um, when I was younger, not when I was young. Um- Was in high school. And basically wanted to be a singer. She's always been someone that's like so very talented.</i></p>
+          <audio controls="">
+            <source src="https://raw.githubusercontent.com/styletalker/styletalker.github.io/main/wav/podcast/cascade/3.wav" type="audio/wav">
+              Your browser does not support the audio element.
+          </audio>
+        <li><b>StyleTalker: </b></li>
+		<p><i>I'm not gonna say the name, but it's someone I'm pretty close to.</i></p>
+          <audio controls="">
+            <source src="https://raw.githubusercontent.com/styletalker/styletalker.github.io/main/wav/podcast/styletalker/3.wav" type="audio/wav">
+              Your browser does not support the audio element.
+          </audio>
+      </ul>
+    </td>
+  </tr>
+</tbody></table>
+
+
+**Sample 3**
+
+
+<table>
+  <tbody><tr>
+    <th>Context</th>
+    <th>Next Turn</th>
+  </tr>
+  <tr>
+    <td>
+      <ul>
+<p>A: 'Right, and it's, it's largely based on, you know, the last 40 or 50 years, like, what just sort of caught on.'</p>
+<p>B: 'A lot of it is very arbitrary. Even- Even the design, and this is, this scares some people. I don't know why. Even the design of- ... architectures, right? We're using the von Neumann architecture sometimes, right, where you have the same data bus. for instructions and for data, but it didn't have to go that way either. You could have had a different way for the computer to have been architected.'</p>
+<p>A: 'Well, I mean, uh ...'</p>
+          <audio controls="">
+            <source src="https://raw.githubusercontent.com/styletalker/styletalker.github.io/main/wav/podcast/context/1.wav">
+              Your browser does not support the audio element.
+          </audio>
+      </ul>
+    </td>
+    <td>
+      <ul>
+        <li><b>Ground Truth: </b></li>
+		<p><i>We're not advocating for you to know how to design your own computer, even though that's part of- That's a course I wanna have. But you don't have to. It's, it's almost, it's just that you're aware of it. And you understand that you don't have to be scared, that you don't have to follow these things as if it was science. human made decisions to sort of deal with computers in a way that helped that person's psychology or help that person's.</i></p>
+          <audio controls="">
+            <source src="https://raw.githubusercontent.com/styletalker/styletalker.github.io/main/wav/podcast/gt/1.wav" type="audio/wav">
+              Your browser does not support the audio element.
+          </audio>
+        <li><b>Cascade: </b></li>
+		<p><i>And we could've done it in many other ways as well.</i></p>
+          <audio controls="">
+            <source src="https://raw.githubusercontent.com/styletalker/styletalker.github.io/main/wav/podcast/cascade/1.wav" type="audio/wav">
+              Your browser does not support the audio element.
+          </audio>
+        <li><b>StyleTalker: </b></li>
+		<p><i>Right, so, you know, it's, it's just the way that people have designed it. And, and so, you know, we can imagine, like, the, the, the, the kind of, you know, the idea of the Von Neumann architecture. ... that's just a particular way of, of doing things, and we can imagine different ways of doing things.</i></p>
+          <audio controls="">
+            <source src="https://raw.githubusercontent.com/styletalker/styletalker.github.io/main/wav/podcast/styletalker/1.wav" type="audio/wav">
+              Your browser does not support the audio element.
+          </audio>
+      </ul>
+    </td>
+  </tr>
+</tbody></table>
+
+---
 
 ## DailyTalk Dataset
 
@@ -20,9 +159,9 @@ For a fair comparison to the baseline models, all audios are downsampled to 16k 
   <tr>
     <td>
       <ul>
-        <p>A: 'Where does it go wrong?</i></p>
-<p>B: 'Let me stop my car for check. Oh, my god. I got a flat tyre.</i></p>
-<p>A: 'Can it keep going?</i></p>
+        <p>A: 'Where does it go wrong?'</p>
+<p>B: 'Let me stop my car for check. Oh, my god. I got a flat tyre.'</p>
+<p>A: 'Can it keep going?'</p>
           <audio controls="">
             <source src="https://raw.githubusercontent.com/styletalker/styletalker.github.io/main/wav/dailytalk/context/3.wav">
               Your browser does not support the audio element.
@@ -72,9 +211,9 @@ For a fair comparison to the baseline models, all audios are downsampled to 16k 
   <tr>
     <td>
       <ul>
-        <p>A: 'I'll take two value meals.</i></p>
-<p>B: 'What kind of drink do you want with those?</i></p>
-<p>A: 'One Coke and the other a Sprite, please.</i></p>
+        <p>A: 'I'll take two value meals.'</p>
+<p>B: 'What kind of drink do you want with those?'</p>
+<p>A: 'One Coke and the other a Sprite, please.'</p>
           <audio controls="">
             <source src="https://raw.githubusercontent.com/styletalker/styletalker.github.io/main/wav/dailytalk/context/2.wav">
               Your browser does not support the audio element.
@@ -124,9 +263,9 @@ For a fair comparison to the baseline models, all audios are downsampled to 16k 
   <tr>
     <td>
       <ul>
-        <p>A: 'Didn't you notice the roses everywhere?</i></p>
-<p>B: 'I hear it's Chinese Valentine's Day! Don't you know?</i></p>
-<p>A: 'Oh, God. I just forgot it. I should have brought roses for my boyfriend.</i></p>
+        <p>A: 'Didn't you notice the roses everywhere?'</p>
+<p>B: 'I hear it's Chinese Valentine's Day! Don't you know?'</p>
+<p>A: 'Oh, God. I just forgot it. I should have brought roses for my boyfriend.'</p>
           <audio controls="">
             <source src="https://raw.githubusercontent.com/styletalker/styletalker.github.io/main/wav/dailytalk/context/2.wav">
               Your browser does not support the audio element.
