@@ -1,4 +1,4 @@
-# StyleTalker
+# StyleTalker: Finetuning Audio Language Model and Style-Based Text-to-Speech Model for Fast Spoken Dialogue Generation
 ---
 
 ## Abstract
