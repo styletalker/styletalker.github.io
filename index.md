@@ -22,9 +22,9 @@ For a fair comparison to the baseline models, all audios are downsampled to 16k 
   <tr>
     <td>
       <ul>
-        <p>A: 'You're from New York, aren't you?'</p>
-<p>B: 'Yes, that's right.'</p>
-<p>A: 'What do you suggest I should see in New York?'</p>
+        <p>A: 'Didn't you notice the roses everywhere?'</p>
+<p>B: 'I hear it's Chinese Valentine's Day! Don't you know?'</p>
+<p>A: 'Oh, God. I just forgot it. I should have brought roses for my boyfriend.'</p>
           <audio controls="">
             <source src="">
               Your browser does not support the audio element.
@@ -34,21 +34,25 @@ For a fair comparison to the baseline models, all audios are downsampled to 16k 
     <td>
       <ul>
         <li><b>Ground Truth: </b></li>
+		<p>'It's not too late. Go to buy some now.'</p>
           <audio controls="">
             <source src="" type="audio/wav">
               Your browser does not support the audio element.
           </audio>
         <li><b>SpeechGPT: </b></li>
+		<p>'Why haven't you had it? '</p>
           <audio controls="">
             <source src="" type="audio/wav">
               Your browser does not support the audio element.
           </audio>
         <li><b>Cascade: </b></li>
+		<p>'I think you can use any flowers in place of roses.'</p>
           <audio controls="">
             <source src="" type="audio/wav">
               Your browser does not support the audio element.
           </audio>
         <li><b>StyleTalker: </b></li>
+		<p>'You can still get them today. But you have to hurry.'</p>
           <audio controls="">
             <source src="" type="audio/wav">
               Your browser does not support the audio element.
