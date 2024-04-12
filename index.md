@@ -8,8 +8,6 @@ The rapid advancement of large language models (LLMs) has significantly propelle
 
 For a fair comparison to the baseline models, all audios are downsampled to 16k Hz. 
 
-**All utterances are completely unseen during training, and the results are uncurated (NOT cherry-picked) unless otherwise specified**.
-
 
 **Sample 1**
 
@@ -22,11 +20,11 @@ For a fair comparison to the baseline models, all audios are downsampled to 16k 
   <tr>
     <td>
       <ul>
-        <p>A: 'You're from New York, aren't you?'</p>
-<p>B: 'Yes, that's right.'</p>
-<p>A: 'What do you suggest I should see in New York?'</p>
+        <p>A: 'Where does it go wrong?'</p>
+<p>B: 'Let me stop my car for check. Oh, my god. I got a flat tyre.'</p>
+<p>A: 'Can it keep going?'</p>
           <audio controls="">
-            <source src="">
+            <source src="https://raw.githubusercontent.com/styletalker/styletalker.github.io/main/wav/dailytalk/context/3.wav">
               Your browser does not support the audio element.
           </audio>
       </ul>
@@ -34,23 +32,27 @@ For a fair comparison to the baseline models, all audios are downsampled to 16k 
     <td>
       <ul>
         <li><b>Ground Truth: </b></li>
+		<p>'Sorry. You'd better get off for taking another taxi.'</p>
           <audio controls="">
-            <source src="" type="audio/wav">
+            <source src="https://raw.githubusercontent.com/styletalker/styletalker.github.io/main/wav/dailytalk/gt/3.wav" type="audio/wav">
               Your browser does not support the audio element.
           </audio>
         <li><b>SpeechGPT: </b></li>
+		<p>'No. It can't keep going.'</p>
           <audio controls="">
-            <source src="" type="audio/wav">
+            <source src="https://raw.githubusercontent.com/styletalker/styletalker.github.io/main/wav/dailytalk/speechgpt/3.wav" type="audio/wav">
               Your browser does not support the audio element.
           </audio>
         <li><b>Cascade: </b></li>
+		<p>'I think so.'</p>
           <audio controls="">
-            <source src="" type="audio/wav">
+            <source src="https://raw.githubusercontent.com/styletalker/styletalker.github.io/main/wav/dailytalk/cascade/3.wav" type="audio/wav">
               Your browser does not support the audio element.
           </audio>
         <li><b>StyleTalker: </b></li>
+		<p>'No, I think it's flat. I think I have a nail in it.'</p>
           <audio controls="">
-            <source src="" type="audio/wav">
+            <source src="https://raw.githubusercontent.com/styletalker/styletalker.github.io/main/wav/dailytalk/styletalker/3.wav" type="audio/wav">
               Your browser does not support the audio element.
           </audio>
       </ul>
@@ -59,3 +61,105 @@ For a fair comparison to the baseline models, all audios are downsampled to 16k 
 </tbody></table>
 
 
+**Sample 2**
+
+
+<table>
+  <tbody><tr>
+    <th>Context</th>
+    <th>Next Turn</th>
+  </tr>
+  <tr>
+    <td>
+      <ul>
+        <p>A: 'I'll take two value meals.'</p>
+<p>B: 'What kind of drink do you want with those?'</p>
+<p>A: 'One Coke and the other a Sprite, please.'</p>
+          <audio controls="">
+            <source src="https://raw.githubusercontent.com/styletalker/styletalker.github.io/main/wav/dailytalk/context/2.wav">
+              Your browser does not support the audio element.
+          </audio>
+      </ul>
+    </td>
+    <td>
+      <ul>
+        <li><b>Ground Truth: </b></li>
+		<p>'You can super-size your meal for only thirty nine cents extra.'</p>
+          <audio controls="">
+            <source src="https://raw.githubusercontent.com/styletalker/styletalker.github.io/main/wav/dailytalk/gt/2.wav" type="audio/wav">
+              Your browser does not support the audio element.
+          </audio>
+        <li><b>SpeechGPT: </b></li>
+		<p>'Why you don't have anything else?'</p>
+          <audio controls="">
+            <source src="https://raw.githubusercontent.com/styletalker/styletalker.github.io/main/wav/dailytalk/speechgpt/2.wav" type="audio/wav">
+              Your browser does not support the audio element.
+          </audio>
+        <li><b>Cascade: </b></li>
+		<p>'Here they are.'</p>
+          <audio controls="">
+            <source src="https://raw.githubusercontent.com/styletalker/styletalker.github.io/main/wav/dailytalk/cascade/2.wav" type="audio/wav">
+              Your browser does not support the audio element.
+          </audio>
+        <li><b>StyleTalker: </b></li>
+		<p>'How do you want your burgers done?'</p>
+          <audio controls="">
+            <source src="https://raw.githubusercontent.com/styletalker/styletalker.github.io/main/wav/dailytalk/styletalker/2.wav" type="audio/wav">
+              Your browser does not support the audio element.
+          </audio>
+      </ul>
+    </td>
+  </tr>
+</tbody></table>
+
+
+**Sample 3**
+
+
+<table>
+  <tbody><tr>
+    <th>Context</th>
+    <th>Next Turn</th>
+  </tr>
+  <tr>
+    <td>
+      <ul>
+        <p>A: 'Didn't you notice the roses everywhere?'</p>
+<p>B: 'I hear it's Chinese Valentine's Day! Don't you know?'</p>
+<p>A: 'Oh, God. I just forgot it. I should have brought roses for my boyfriend.'</p>
+          <audio controls="">
+            <source src="https://raw.githubusercontent.com/styletalker/styletalker.github.io/main/wav/dailytalk/context/2.wav">
+              Your browser does not support the audio element.
+          </audio>
+      </ul>
+    </td>
+    <td>
+      <ul>
+        <li><b>Ground Truth: </b></li>
+		<p>'It's not too late. Go to buy some now.'</p>
+          <audio controls="">
+            <source src="https://raw.githubusercontent.com/styletalker/styletalker.github.io/main/wav/dailytalk/gt/1.wav" type="audio/wav">
+              Your browser does not support the audio element.
+          </audio>
+        <li><b>SpeechGPT: </b></li>
+		<p>'Why haven't you had it?'</p>
+          <audio controls="">
+            <source src="https://raw.githubusercontent.com/styletalker/styletalker.github.io/main/wav/dailytalk/speechgpt/1.wav" type="audio/wav">
+              Your browser does not support the audio element.
+          </audio>
+        <li><b>Cascade: </b></li>
+		<p>'I think you can use any flowers in place of roses.'</p>
+          <audio controls="">
+            <source src="https://raw.githubusercontent.com/styletalker/styletalker.github.io/main/wav/dailytalk/cascade/1.wav" type="audio/wav">
+              Your browser does not support the audio element.
+          </audio>
+        <li><b>StyleTalker: </b></li>
+		<p>'You can still get them today. But you have to hurry.'</p>
+          <audio controls="">
+            <source src="https://raw.githubusercontent.com/styletalker/styletalker.github.io/main/wav/dailytalk/styletalker/1.wav" type="audio/wav">
+              Your browser does not support the audio element.
+          </audio>
+      </ul>
+    </td>
+  </tr>
+</tbody></table>
